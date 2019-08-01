@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import { FormGroup, FormControl, InputGroup } from "react-bootstrap";
+import { FormGroup, FormControl, InputGroup, Button } from "react-bootstrap";
 import Profile from "./Profile";
 
 const ACCESS_ID = process.env.REACT_APP_ACCESS_ID;
@@ -51,7 +51,9 @@ class App extends Component {
                 }
               }}
             />
-            <button onClick={() => this.search()}>search</button>
+            <Button variant="success" onClick={() => this.search()}>
+              search
+            </Button>
           </InputGroup>
         </FormGroup>
         <Profile artist={this.state.artist} />
