@@ -22,10 +22,10 @@ body {
 
 .profile-info {
     margin-left: 10px;
-    text-align: left;
-    display: flex;
+    /* text-align: left; */
+    /* display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: center; */
 }
 
 .profile-img {
@@ -34,9 +34,9 @@ body {
     border: 3px solid white;
     border-radius: 75px;
     object-fit: cover;
-    display: flex;
+    /* display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: center; */
 }
 
 .profile-name {
@@ -52,6 +52,9 @@ body {
 .profile-followers {
     font-size: 18px;
 }
+
+
+/* GALLERY */
 
 
 .track {
