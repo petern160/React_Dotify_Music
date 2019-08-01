@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import "./App.css";
 import { FormGroup, FormControl, InputGroup, Button } from "react-bootstrap";
 import Profile from "./Profile";
+import Gallery from "./Gallery";
 
 const ACCESS_ID = process.env.REACT_APP_AUTH_KEY;
-console.log("this is my access_ID", ACCESS_ID);
+// console.log("this is my access_ID", ACCESS_ID);
 // const TOP_TRACKS = process.env.REACT_APP_TOP_TRACKS;
 
 class App extends Component {
@@ -12,7 +13,8 @@ class App extends Component {
     super(props);
     this.state = {
       query: "",
-      artist: null
+      artist: null,
+      tracks: []
     };
   }
 
@@ -44,6 +46,8 @@ class App extends Component {
           .then(response => response.json())
           .then(json => {
             console.log("artist top tracks", json);
+            const { tracks } = json;
+            this.setState({ tracks });
           });
       });
   }
@@ -75,7 +79,7 @@ class App extends Component {
         {this.state.artist !== null ? (
           <div>
             <Profile artist={this.state.artist} />
-            <div className="Gallery">Gallery</div>
+            <Gallery tracks={this.state.tracks} />
           </div>
         ) : (
           <div />
