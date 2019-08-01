@@ -3,7 +3,10 @@ import "./App.css";
 import { FormGroup, FormControl, InputGroup, Button } from "react-bootstrap";
 import Profile from "./Profile";
 
-const ACCESS_ID = process.env.REACT_APP_ACCESS_ID;
+const ACCESS_ID = process.env.REACT_APP_AUTH_KEY;
+console.log("this is my access_ID", ACCESS_ID);
+// const TOP_TRACKS = process.env.REACT_APP_TOP_TRACKS;
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -16,8 +19,9 @@ class App extends Component {
   search() {
     console.log("this.stae", this.state);
     const BASE_URL = "https://api.spotify.com/v1/search?";
-    const FETCH_URL = `${BASE_URL}q=${this.state.query}&type=artist&limit=1`;
-    console.log(FETCH_URL);
+    let FETCH_URL = `${BASE_URL}q=${this.state.query}&type=artist&limit=1`;
+    const ALBUM_URL = `https://api.spotify.com/v1/artists/`;
+
     fetch(FETCH_URL, {
       method: "GET",
       headers: {
@@ -29,6 +33,18 @@ class App extends Component {
         const artist = json.artists.items[0];
         console.log("artist", artist);
         this.setState({ artist });
+
+        let FETCH_URL = `${ALBUM_URL}${artist.id}/top-tracks?country=US&`;
+        fetch(FETCH_URL, {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${ACCESS_ID}`
+          }
+        })
+          .then(response => response.json())
+          .then(json => {
+            console.log("artist top tracks", json);
+          });
       });
   }
 
@@ -56,8 +72,14 @@ class App extends Component {
             </Button>
           </InputGroup>
         </FormGroup>
-        <Profile artist={this.state.artist} />
-        <div className="Gallery">Gallery</div>
+        {this.state.artist !== null ? (
+          <div>
+            <Profile artist={this.state.artist} />
+            <div className="Gallery">Gallery</div>
+          </div>
+        ) : (
+          <div />
+        )}
       </div>
     );
   }
