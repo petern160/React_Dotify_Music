@@ -12,5 +12,7 @@ spotify music artist search
 make sure to update OAuth web keys
 
 A React application that uses the spotify API to retrieve artist data and top tracks
+When you search for an artist it retrieves the followers and genre of music along with the top 10 tracks they have.
+You can click on each individual track to listen to the song.
 
 ![](dotify.gif)
