@@ -5,8 +5,6 @@ import Profile from "./Profile";
 import Gallery from "./Gallery";
 
 const ACCESS_ID = process.env.REACT_APP_AUTH_KEY;
-// console.log("this is my access_ID", ACCESS_ID);
-// const TOP_TRACKS = process.env.REACT_APP_TOP_TRACKS;
 
 class App extends Component {
   constructor(props) {
@@ -19,6 +17,8 @@ class App extends Component {
   }
 
   search() {
+    // retrieving artist and top track information from spotify api
+    // will hae to renew OAuth when it expires
     console.log("this.stae", this.state);
     const BASE_URL = "https://api.spotify.com/v1/search?";
     let FETCH_URL = `${BASE_URL}q=${this.state.query}&type=artist&limit=1`;

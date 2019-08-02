@@ -54,7 +54,7 @@ body {
 }
 
 
-/* GALLERY */
+/* TOP TRACKS */
 
 
 .track {
@@ -78,6 +78,12 @@ body {
     position: absolute;
 }
 
+.track-img:hover {
+    opacity: 0.7;
+    border: 3px solid red;
+
+}
+
 .track-text {
     background-color: black;
     color: white;
@@ -88,4 +94,27 @@ body {
     position: absolute;
     bottom: 0;
     padding: 10px;
+}
+
+
+.track-play {
+    position: absolute;
+    width: 220px;
+    height: 220px;
+}
+
+.track-play-inner {
+
+    position: absolute;
+    text-align: center;
+    font-size: 25px;
+    background-color: black;
+    border-radius: 30px;
+    width: 60px;
+    height: 60px;
+    color: white;
+    padding-top: 13px;
+    margin-left: 80px;
+    margin-top: 80px;
+    opacity: 0;
 }
